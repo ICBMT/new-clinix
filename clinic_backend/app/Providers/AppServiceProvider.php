@@ -111,6 +111,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->app->bind(\App\Contracts\StaffLeaveRepositoryInterface::class, \App\Repositories\StaffLeaveRepository::class);
+
         // Override the password broker manager to use custom token repository
         $this->app->singleton('auth.password', function ($app) {
             return new CustomPasswordBrokerManager($app);

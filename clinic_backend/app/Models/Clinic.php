@@ -440,6 +440,11 @@ class Clinic extends Model
             Log::error("Failed to dispatch clinic rejected notification for Clinic ID {$clinic->id}: " . $e->getMessage());
         }
     }
+
+    public function staffLeaves(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(StaffLeave::class, 'clinic_id');
+    }
 }
 
 

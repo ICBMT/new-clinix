@@ -15,6 +15,13 @@ class PermissionSeeder extends Seeder
      * Only includes permissions actually used in the application
      */
     private static $permissionGroups = [
+        'Staff Leave' => [
+            'staff-leaves.view',
+            'staff-leaves.create',
+            'staff-leaves.show',
+            'staff-leaves.edit',
+            'staff-leaves.destroy',
+        ],
         // Tab group Platform
         'Platform' => [
             'dashboard.view',
@@ -406,6 +413,7 @@ class PermissionSeeder extends Seeder
                 str_starts_with($permission->name, 'machines.') ||
                 str_starts_with($permission->name, 'reviews.') ||
                 str_starts_with($permission->name, 'clinics-staff.') ||
+                str_starts_with($permission->name, 'staff-leaves.') ||
                 str_starts_with($permission->name, 'notifications.') ||
                 str_starts_with($permission->name, 'profile.');
             
@@ -478,6 +486,7 @@ class PermissionSeeder extends Seeder
                 str_starts_with($permission->name, 'clinics-operating-hours.') ||
                 str_starts_with($permission->name, 'clinics-subscriptions.') ||
                 str_starts_with($permission->name, 'clinics-staff.') ||
+                str_starts_with($permission->name, 'staff-leaves.') ||
                 str_starts_with($permission->name, 'bookings.') ||
                 str_starts_with($permission->name, 'clinics-bookings.') ||
                 str_starts_with($permission->name, 'earnings.') ||

@@ -334,6 +334,7 @@ class RoleManagementController extends Controller
             'clinics-subscriptions' => 'Clinics Subscriptions',
             'clinics-payouts' => 'Clinics Payouts',
             'clinics-staff' => 'Clinics Staff',
+            'staff-leaves' => 'Staff Leave',
             'clinic-subscriptions' => 'Clinic Subscriptions',
             'treatment-slots' => 'Treatment Slots',
             'subscription-packages' => 'Subscription Packages',

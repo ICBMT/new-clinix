@@ -1,0 +1,1 @@
+import{j as o}from"./app-b6suADhr.js";import{b as i,c as m}from"./utils-CeY9Ae51.js";function a({message:t,className:r="",...e}){const{isRTL:s,dir:n}=i();return t?o.jsx("p",{...e,className:m("text-sm font-medium text-red-600 dark:text-red-400 mt-1",s?"!text-right":"!text-left",r),dir:n,children:t}):null}export{a as I};

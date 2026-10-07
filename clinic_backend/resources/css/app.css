@@ -1,0 +1,565 @@
+@import 'tailwindcss';
+@import './ckeditor.css';
+
+@plugin 'tailwindcss-animate';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    --font-sans:
+        'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+    --background: oklch(0.98 0.01 280);
+    --foreground: oklch(0.25 0.02 280);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.25 0.02 280);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.25 0.02 280);
+    --primary: oklch(0.65 0.15 285);
+    --primary-foreground: oklch(0.98 0.01 280);
+    --secondary: oklch(0.93 0.02 285);
+    --secondary-foreground: oklch(0.35 0.02 280);
+    --muted: oklch(0.95 0.015 285);
+    --muted-foreground: oklch(0.5 0.02 280);
+    --accent: oklch(0.93 0.03 285);
+    --accent-foreground: oklch(0.3 0.02 280);
+    --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: oklch(0.985 0 0);
+    --border: oklch(0.88 0.02 285);
+    --input: oklch(0.88 0.02 285);
+    --ring: oklch(0.65 0.15 285);
+    --chart-1: oklch(0.65 0.15 285);
+    --chart-2: oklch(0.6 0.14 280);
+    --chart-3: oklch(0.55 0.13 290);
+    --chart-4: oklch(0.7 0.16 280);
+    --chart-5: oklch(0.5 0.12 275);
+    --radius: 0.625rem;
+    --sidebar: oklch(0.97 0.015 285);
+    --sidebar-foreground: oklch(0.3 0.02 280);
+    --sidebar-primary: oklch(0.65 0.15 285);
+    --sidebar-primary-foreground: oklch(0.98 0.01 280);
+    --sidebar-accent: oklch(0.93 0.02 285);
+    --sidebar-accent-foreground: oklch(0.35 0.02 280);
+    --sidebar-border: oklch(0.88 0.02 285);
+    --sidebar-ring: oklch(0.82 0.03 285);
+}
+
+.dark {
+    --background: oklch(0.18 0.015 280);
+    --foreground: oklch(0.95 0.01 280);
+    --card: oklch(0.2 0.015 280);
+    --card-foreground: oklch(0.95 0.01 280);
+    --popover: oklch(0.2 0.015 280);
+    --popover-foreground: oklch(0.95 0.01 280);
+    --primary: oklch(0.7 0.18 285);
+    --primary-foreground: oklch(0.15 0.015 280);
+    --secondary: oklch(0.3 0.02 285);
+    --secondary-foreground: oklch(0.95 0.01 280);
+    --muted: oklch(0.28 0.02 285);
+    --muted-foreground: oklch(0.7 0.02 280);
+    --accent: oklch(0.35 0.03 285);
+    --accent-foreground: oklch(0.95 0.01 280);
+    --destructive: oklch(0.45 0.20 25);
+    --destructive-foreground: oklch(0.95 0.01 280);
+    --border: oklch(0.3 0.02 285);
+    --input: oklch(0.3 0.02 285);
+    --ring: oklch(0.7 0.18 285);
+    --chart-1: oklch(0.7 0.18 285);
+    --chart-2: oklch(0.65 0.17 280);
+    --chart-3: oklch(0.6 0.16 290);
+    --chart-4: oklch(0.75 0.19 280);
+    --chart-5: oklch(0.55 0.15 275);
+    --sidebar: oklch(0.22 0.02 280);
+    --sidebar-foreground: oklch(0.95 0.01 280);
+    --sidebar-primary: oklch(0.7 0.18 285);
+    --sidebar-primary-foreground: oklch(0.15 0.015 280);
+    --sidebar-accent: oklch(0.3 0.02 285);
+    --sidebar-accent-foreground: oklch(0.95 0.01 280);
+    --sidebar-border: oklch(0.3 0.02 285);
+    --sidebar-ring: oklch(0.45 0.03 285);
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+/* Global Hover Color Shift - Purple Theme */
+:root {
+    --hover-tint-light: oklch(0.96 0.02 285);
+    --hover-tint-medium: oklch(0.94 0.025 285);
+    --hover-tint-strong: oklch(0.92 0.03 285);
+    --hover-text-tint: oklch(0.6 0.16 285);
+    --hover-border-tint: oklch(0.85 0.025 285);
+}
+
+.dark {
+    --hover-tint-light: oklch(0.25 0.02 285);
+    --hover-tint-medium: oklch(0.28 0.025 285);
+    --hover-tint-strong: oklch(0.32 0.03 285);
+    --hover-text-tint: oklch(0.75 0.19 285);
+    --hover-border-tint: oklch(0.35 0.025 285);
+}
+
+/* Global hover styles for interactive elements */
+@layer utilities {
+    /* Smooth transitions for all interactive elements */
+    button,
+    [role="button"],
+    [class*="card"],
+    [class*="Card"],
+    .cursor-pointer,
+    input[type="button"],
+    input[type="submit"] {
+        transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+    }
+
+    /* Cards and containers - ONLY apply hover when inside anchor tags */
+    /* Removed general card hover to prevent page-wide hover effects */
+
+
+
+    /* Utility classes for manual application */
+    .hover-color-shift:hover {
+        background-color: var(--hover-tint-light);
+        color: var(--hover-text-tint);
+    }
+
+    .hover-bg-shift:hover {
+        background-color: var(--hover-tint-medium);
+    }
+
+    .hover-text-shift:hover {
+        color: var(--hover-text-tint);
+    }
+
+    .hover-strong:hover {
+        background-color: var(--hover-tint-strong);
+        color: var(--hover-text-tint);
+        border-color: var(--hover-text-tint);
+    }
+
+    /* Disable hover effects when needed */
+    .no-hover,
+    .no-hover:hover {
+        transition: none !important;
+    }
+}
+
+/* Custom Primary Gradient Colors - Purple Theme */
+:root {
+    --primary-gradient-start: #A8B5FF;
+    --primary-gradient-end: #6B46C1;
+    --primary-gradient: linear-gradient(135deg, var(--primary-gradient-start), var(--primary-gradient-end));
+}
+
+.dark {
+    --primary-gradient-start: #8B7FD9;
+    --primary-gradient-end: #4C1D95;
+    --primary-gradient: linear-gradient(135deg, var(--primary-gradient-start), var(--primary-gradient-end));
+}
+
+/* Gradient utility classes */
+.bg-primary-gradient {
+    background: var(--primary-gradient);
+}
+
+.text-primary-gradient {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.border-primary-gradient {
+    border-image: var(--primary-gradient) 1;
+}
+
+/* ==========================================================================
+   RTL Support - Comprehensive Rules
+   ========================================================================== */
+
+/* Global RTL Direction */
+html[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] body {
+    direction: rtl;
+    text-align: right;
+}
+
+/* RTL Class for React Root */
+.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Ensure all text elements inherit RTL direction */
+html[dir="rtl"] * {
+    direction: inherit;
+}
+
+/* ==========================================================================
+   Form Elements - Input Fields, Labels, Placeholders (CRITICAL)
+   ========================================================================== */
+
+/* All Input Fields - RTL Direction and Alignment */
+html[dir="rtl"] input,
+html[dir="rtl"] input[type="text"],
+html[dir="rtl"] input[type="email"],
+html[dir="rtl"] input[type="password"],
+html[dir="rtl"] input[type="number"],
+html[dir="rtl"] input[type="tel"],
+html[dir="rtl"] input[type="search"],
+html[dir="rtl"] input[type="url"],
+html[dir="rtl"] input[type="date"],
+html[dir="rtl"] input[type="time"],
+html[dir="rtl"] input[type="datetime-local"],
+html[dir="rtl"] textarea,
+html[dir="rtl"] select {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Labels - Right Aligned */
+html[dir="rtl"] label {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Buttons - RTL Direction */
+html[dir="rtl"] button {
+    direction: rtl;
+    text-align: right;
+}
+
+/* RTL for Placeholders (VERY IMPORTANT) */
+html[dir="rtl"] input::placeholder,
+html[dir="rtl"] textarea::placeholder {
+    direction: rtl;
+    text-align: right;
+}
+
+/* RTL for Input Focus States */
+html[dir="rtl"] input:focus,
+html[dir="rtl"] textarea:focus,
+html[dir="rtl"] select:focus {
+    direction: rtl;
+    text-align: right;
+}
+
+/* ==========================================================================
+   Component Library Support (Radix UI, Shadcn)
+   ========================================================================== */
+
+/* Radix UI Select Components */
+html[dir="rtl"] [data-slot="input"],
+html[dir="rtl"] [data-slot="label"],
+html[dir="rtl"] [data-radix-select-trigger],
+html[dir="rtl"] [data-radix-select-value],
+html[dir="rtl"] [data-radix-select-content],
+html[dir="rtl"] [data-radix-select-item] {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Shadcn UI Components */
+html[dir="rtl"] [data-slot="root"] input,
+html[dir="rtl"] [data-slot="root"] textarea,
+html[dir="rtl"] [data-slot="root"] select {
+    direction: rtl;
+    text-align: right;
+}
+
+/* RTL for Radix UI Select components */
+html[dir="rtl"] [data-radix-select-trigger],
+html[dir="rtl"] [data-radix-select-content],
+html[dir="rtl"] [data-radix-select-item] {
+    direction: rtl;
+    text-align: right;
+}
+
+/* RTL for dropdown content */
+html[dir="rtl"] [data-radix-popper-content-wrapper] {
+    direction: rtl;
+}
+
+html[dir="rtl"] [data-radix-popper-content-wrapper] * {
+    direction: rtl;
+    text-align: right;
+}
+
+/* RTL spacing utilities */
+html[dir="rtl"] .space-x-2 > * + * {
+    margin-left: 0;
+    margin-right: 0.5rem;
+}
+
+html[dir="rtl"] .space-x-4 > * + * {
+    margin-left: 0;
+    margin-right: 1rem;
+}
+
+html[dir="rtl"] .space-x-6 > * + * {
+    margin-left: 0;
+    margin-right: 1.5rem;
+}
+
+html[dir="rtl"] .ml-auto {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+html[dir="rtl"] .mr-2 {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+html[dir="rtl"] .mr-4 {
+    margin-right: 0;
+    margin-left: 1rem;
+}
+
+html[dir="rtl"] .pl-4 {
+    padding-left: 0;
+    padding-right: 1rem;
+}
+
+html[dir="rtl"] .pr-4 {
+    padding-right: 0;
+    padding-left: 1rem;
+}
+
+/* These are now handled above with html[dir="rtl"] */
+
+/* RTL specific adjustments for sidebar */
+html[dir="rtl"] [data-sidebar="sidebar"] {
+    border-right: none;
+    border-left: 1px solid var(--sidebar-border);
+}
+
+html[dir="rtl"] [data-sidebar="sidebar"] [data-sidebar="content"] {
+    padding-right: 0;
+    padding-left: 1rem;
+}
+
+/* RTL adjustments for dropdown menus */
+html[dir="rtl"] [data-radix-popper-content-wrapper] {
+    transform: translateX(0);
+}
+
+/* RTL adjustments for navigation */
+html[dir="rtl"] .navigation-menu-list {
+    flex-direction: row-reverse;
+}
+
+/* RTL adjustments for breadcrumbs */
+html[dir="rtl"] .breadcrumb-separator {
+    transform: scaleX(-1);
+}
+
+/* RTL adjustments for language switcher */
+html[dir="rtl"] .language-switcher-dropdown {
+    right: auto;
+    left: 0;
+}
+
+/* Responsive language switcher */
+@media (max-width: 640px) {
+    .language-switcher-text {
+        display: none;
+    }
+}
+
+/* RTL language switcher spacing */
+html[dir="rtl"] .language-switcher-item {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .language-switcher-item .flag {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
+/* React DatePicker Custom Styles */
+.react-datepicker-popper {
+    z-index: 9999 !important;
+}
+
+.react-datepicker {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    background-color: var(--background);
+    color: var(--foreground);
+}
+
+.react-datepicker__header {
+    background-color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.react-datepicker__current-month {
+    color: var(--foreground);
+    font-weight: 600;
+}
+
+.react-datepicker__day-name {
+    color: var(--muted-foreground);
+    font-weight: 500;
+}
+
+.react-datepicker__day {
+    color: var(--foreground);
+    border-radius: var(--radius-sm);
+}
+
+.react-datepicker__day:hover {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+}
+
+.react-datepicker__day--selected {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+}
+
+.react-datepicker__day--selected:hover {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+}
+
+.react-datepicker__day--in-range {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+}
+
+.react-datepicker__day--in-selecting-range {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+}
+
+.react-datepicker__day--range-start,
+.react-datepicker__day--range-end {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+}
+
+.react-datepicker__navigation {
+    color: var(--foreground);
+}
+
+.react-datepicker__navigation:hover {
+    color: var(--primary);
+}
+
+.react-datepicker__input-container input {
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    color: var(--foreground);
+}
+
+.react-datepicker__input-container input:focus {
+    outline: none;
+    border-color: var(--ring);
+    box-shadow: 0 0 0 2px var(--ring);
+}
+
+/* RTL Support for DatePicker */
+html[dir="rtl"] .react-datepicker {
+    direction: rtl;
+}
+
+html[dir="rtl"] .react-datepicker__navigation--previous {
+    right: 10px;
+    left: auto;
+}
+
+html[dir="rtl"] .react-datepicker__navigation--next {
+    left: 10px;
+    right: auto;
+}
+
+html[dir="rtl"] .react-datepicker__month-container {
+    float: right;
+}
+
+html[dir="rtl"] .react-datepicker__time-container {
+    float: left;
+}
+
+html[dir="rtl"] .react-datepicker__time {
+    text-align: right;
+}
+
+html[dir="rtl"] .react-datepicker__time-box {
+    text-align: right;
+}
+
+/* Dialog Close Button RTL Support */
+[dir="rtl"] [data-radix-dialog-content] > button[data-radix-dialog-close] {
+    right: auto !important;
+    left: 1rem !important;
+}

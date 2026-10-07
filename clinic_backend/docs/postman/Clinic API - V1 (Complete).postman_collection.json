@@ -1,0 +1,2271 @@
+{
+	"info": {
+		"_postman_id": "6189e1f0-0ac9-4740-b67d-9874ce48f81c",
+		"name": "Clinic API - V1 (Complete)",
+		"description": "Complete API collection for Clinic Management System - ONLY includes endpoints defined in routes/api/v1.php",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "39827394",
+		"_collection_link": "https://martian-shuttle-339798.postman.co/workspace/Team-Workspace~7f052ce7-9fda-432f-8977-c86e1041f745/collection/39827394-6189e1f0-0ac9-4740-b67d-9874ce48f81c?action=share&source=collection_link&creator=39827394"
+	},
+	"item": [
+		{
+			"name": "🔐 Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"phone\": \"{{phone}}\",\n  \"password\": \"{{password}}\",\n  \"device_token\": \"{{device_token}}\",\n  \"device_type\": \"{{device_type}}\"\n}"
+						},
+						"url": "{{base_url}}/api/v1/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "List Machines",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/auth/explore-machines",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"explore-machines"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "ready",
+									"disabled": true
+								},
+								{
+									"key": "manufacturer",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{name}}\",\n  \"phone\": \"{{phone}}\",\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\",\n  \"password_confirmation\": \"{{password}}\",\n  \"device_token\": \"{{device_token}}\",\n  \"device_type\": \"{{device_type}}\"\n}"
+						},
+						"url": "{{base_url}}/api/v1/auth/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Verify OTP",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"phone\": \"{{phone}}\",\n  \"otp\": \"{{otp}}\"\n}"
+						},
+						"url": "{{base_url}}/api/v1/auth/verify-otp"
+					},
+					"response": []
+				},
+				{
+					"name": "Resend OTP",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"phone\": \"{{phone}}\"\n}"
+						},
+						"url": "{{base_url}}/api/v1/auth/resend-otp"
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"phone\": \"{{phone}}\"\n}"
+						},
+						"url": "{{base_url}}/api/v1/auth/forgot-password"
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Reset OTP",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"phone\": \"{{phone}}\",\n  \"otp\": \"{{otp}}\"\n}"
+						},
+						"url": "{{base_url}}/api/v1/auth/verify-reset-otp"
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"phone\": \"{{phone}}\",\n  \"security_token\": \"{{security_token}}\",\n  \"password\": \"{{new_password}}\",\n  \"password_confirmation\": \"{{new_password}}\"\n}"
+						},
+						"url": "{{base_url}}/api/v1/auth/reset-password"
+					},
+					"response": []
+				},
+				{
+					"name": "Guest Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": "{{base_url}}/api/v1/auth/guest-login"
+					},
+					"response": []
+				},
+				{
+					"name": "Google Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"token\": \"{{google_token}}\",\n  \"device_token\": \"{{device_token}}\",\n  \"device_type\": \"android\"\n}"
+						},
+						"url": "{{base_url}}/api/v1/auth/social/google"
+					},
+					"response": []
+				},
+				{
+					"name": "Apple Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"token\": \"{{apple_token}}\",\n  \"device_token\": \"{{device_token}}\",\n  \"device_type\": \"ios\"\n}"
+						},
+						"url": "{{base_url}}/api/v1/auth/social/apple"
+					},
+					"response": []
+				}
+			],
+			"description": "User authentication endpoints (login, register, OTP, password reset, social login)"
+		},
+		{
+			"name": "🔒 Auth (Protected)",
+			"item": [
+				{
+					"name": "Me",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/v1/auth/me"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"device_token\": \"{{device_token}}\"\n}"
+						},
+						"url": "{{base_url}}/api/v1/auth/logout"
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"current_password\": \"{{current_password}}\",\n  \"password\": \"{{new_password}}\",\n  \"password_confirmation\": \"{{new_password}}\"\n}"
+						},
+						"url": "{{base_url}}/api/v1/auth/change-password"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout All Devices",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{base_url}}/api/v1/auth/logout-all-devices"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Account",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{base_url}}/api/v1/auth/delete-account"
+					},
+					"response": []
+				}
+			],
+			"description": "Protected authentication endpoints (me, logout, change password, delete account)"
+		},
+		{
+			"name": "👤 User Profile",
+			"item": [
+				{
+					"name": "Medical Records",
+					"item": [
+						{
+							"name": "Get Medical Records",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/user/medical-records?per_page=15",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"medical-records"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "15"
+										},
+										{
+											"key": "search",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "date_from",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "date_to",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Upload Medical Record",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"value": "",
+											"type": "file"
+										},
+										{
+											"key": "name",
+											"value": "Medical Report",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Annual checkup report",
+											"type": "text"
+										},
+										{
+											"key": "record_date",
+											"value": "2025-01-15",
+											"type": "text"
+										}
+									]
+								},
+								"url": "{{base_url}}/api/v1/user/medical-records"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Medical Record",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Updated Report Name\",\n  \"description\": \"Updated description\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/user/medical-records/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"medical-records",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{medical_record_id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Medical Record",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/user/medical-records/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"medical-records",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{medical_record_id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Download Medical Record",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/user/medical-records/:id/download",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"medical-records",
+										":id",
+										"download"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{medical_record_id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Notification Settings",
+					"item": [
+						{
+							"name": "Get Notification Settings",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{base_url}}/api/v1/user/notification-settings"
+							},
+							"response": []
+						},
+						{
+							"name": "Update Notification Settings",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"appointment_reminders\": true,\n  \"reschedule_alerts\": true,\n  \"promotions_offers\": true,\n  \"payment_confirmations\": true,\n  \"feedback_requests\": true,\n  \"special_offers\": true\n}"
+								},
+								"url": "{{base_url}}/api/v1/user/notification-settings"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{profile_name}}\",\n//   \"email\": \"{{profile_email}}\",\n  \"phone\": \"{{profile_phone}}\",\n  \"date_of_birth\": \"{{profile_dob}}\",\n  \"gender\": \"{{profile_gender}}\",\n  \"blood_type\": \"O+\",\n  \"skin_type\": \"medium\",\n  \"medical_history\": [],\n  \"allergies\": [\n  \"Peanuts\",\n  \"Shellfish\",\n  \"Pollen\",\n  \"Dust mites\",\n  \"Eggs\",\n  \"Milk\",\n  \"Soy\",\n  \"Gluten\",\n  \"Penicillin\",\n  \"Latex\"\n],\n\"current_medications\": [\n  \"Paracetamol\",\n  \"Ibuprofen\",\n  \"Metformin\",\n  \"Atorvastatin\",\n  \"Amlodipine\",\n  \"Omeprazole\",\n  \"Insulin\",\n  \"Losartan\",\n  \"Levothyroxine\",\n  \"Aspirin\"\n]\n,\n\"medical_conditions\": [\n  \n]\n,\n  \"emergency_contact_name\": \"Emergency Contact\",\n  \"emergency_contact_phone\": \"+96550000000\",\n  \"emergency_contact_relationship\": \"family\"\n}"
+						},
+						"url": "{{base_url}}/api/v1/user/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Avatar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"value": "",
+									"description": "Image file (jpg, png, max 2MB)",
+									"type": "file"
+								}
+							]
+						},
+						"url": "{{base_url}}/api/v1/user/avatar"
+					},
+					"response": []
+				},
+				{
+					"name": "My Favorites",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/user/favorites?per_page=15",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"favorites"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "15"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "User profile management (update profile, upload avatar, favorites, medical records, notification settings)"
+		},
+		{
+			"name": "🏠 Home & Discovery",
+			"item": [
+				{
+					"name": "Home Summary",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/v1/home"
+					},
+					"response": []
+				},
+				{
+					"name": "Filters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/v1/home/filters"
+					},
+					"response": []
+				},
+				{
+					"name": "List Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/v1/categories"
+					},
+					"response": []
+				},
+				{
+					"name": "Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/home/search",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"home",
+								"search"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "{{type}}",
+									"description": "Filter by type: treatments, clinics, machines",
+									"disabled": true
+								},
+								{
+									"key": "clinic_id",
+									"value": "1",
+									"description": "clinic id",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "{{search}}",
+									"description": "Filter by category ID",
+									"disabled": true
+								},
+								{
+									"key": "category_id",
+									"value": "{{category_id}}",
+									"description": "Array of treatment IDs",
+									"disabled": true
+								},
+								{
+									"key": "treatment_ids[]",
+									"value": "{{treatment_ids}}",
+									"description": "Array of machine IDs",
+									"disabled": true
+								},
+								{
+									"key": "machine_ids[]",
+									"value": "{{machine_ids}}",
+									"description": "Experience: 1-3, 4+, 10+, 15+",
+									"disabled": true
+								},
+								{
+									"key": "experience",
+									"value": "{{experience}}",
+									"description": "Minimum price",
+									"disabled": true
+								},
+								{
+									"key": "min_price",
+									"value": "{{min_price}}",
+									"description": "Maximum price",
+									"disabled": true
+								},
+								{
+									"key": "max_price",
+									"value": "{{max_price}}",
+									"description": "Filter by location (text search)",
+									"disabled": true
+								},
+								{
+									"key": "location",
+									"value": "{{location}}",
+									"disabled": true
+								},
+								{
+									"key": "latitude",
+									"value": "{{latitude}}",
+									"disabled": true
+								},
+								{
+									"key": "longitude",
+									"value": "{{longitude}}",
+									"disabled": true
+								},
+								{
+									"key": "radius",
+									"value": "{{radius}}",
+									"description": "Minimum rating (1-5)",
+									"disabled": true
+								},
+								{
+									"key": "rating",
+									"value": "{{rating}}",
+									"description": "Star rating filter (1-5)",
+									"disabled": true
+								},
+								{
+									"key": "star_rating",
+									"value": "{{star_rating}}",
+									"description": "Filter top doctors (true/false)",
+									"disabled": true
+								},
+								{
+									"key": "top_doctor",
+									"value": "{{top_doctor}}",
+									"description": "Filter discounted items (true/false)",
+									"disabled": true
+								},
+								{
+									"key": "is_discounted",
+									"value": "{{is_discounted}}",
+									"description": "Sort: newest, popularity, price_asc, price_desc, rating",
+									"disabled": true
+								},
+								{
+									"key": "sort_by",
+									"value": "{{sort_by}}",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+		},
+		{
+					"name": "Machine Clinics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/machines/:id/clinics?per_page=15",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"machines",
+								":id",
+								"clinics"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "15"
+								},
+								{
+									"key": "location",
+									"value": "{{location}}",
+									"description": "Filter by location (text search)",
+									"disabled": true
+								},
+								{
+									"key": "latitude",
+									"value": "{{latitude}}",
+									"description": "GPS latitude (requires longitude)",
+									"disabled": true
+								},
+								{
+									"key": "longitude",
+									"value": "{{longitude}}",
+									"description": "GPS longitude (requires latitude)",
+									"disabled": true
+								},
+								{
+									"key": "radius",
+									"value": "{{radius}}",
+									"description": "Search radius in km (default: 10)",
+									"disabled": true
+								},
+								{
+									"key": "rating",
+									"value": "{{rating}}",
+									"description": "Minimum rating (1-5)",
+									"disabled": true
+								},
+								{
+									"key": "star_rating",
+									"value": "{{star_rating}}",
+									"description": "Alias for rating (1-5)",
+									"disabled": true
+								},
+								{
+									"key": "sort_by",
+									"value": "{{sort_by}}",
+									"description": "Sort: newest, rating, popularity",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{machine_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clinic Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/v1/clinics/20"
+					},
+					"response": []
+				},
+				{
+					"name": "Machine Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/v1/machines/24"
+					},
+					"response": []
+				},
+				{
+					"name": "Treatment Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/v1/treatments/18"
+					},
+					"response": []
+				}
+			],
+			"description": "Home page data and search functionality"
+		},
+		{
+			"name": "🔔 Notifications",
+			"item": [
+				{
+					"name": "List Notifications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/notifications?type=all&per_page=15",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"notifications"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "all",
+									"description": "all, unread, promo, account, appointment"
+								},
+								{
+									"key": "per_page",
+									"value": "15"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Notification",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/notifications/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"notifications",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mark As Read",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/notifications/:id/read",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"notifications",
+								":id",
+								"read"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mark All Read",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": "{{base_url}}/api/v1/notifications/read-all"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete All",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": "{{base_url}}/api/v1/notifications/delete-all"
+					},
+					"response": []
+				}
+			],
+			"description": "User notifications management"
+		},
+		{
+			"name": "💊 Treatments",
+			"item": [
+				{
+					"name": "List Treatments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/treatments?per_page=15",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"treatments"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "15"
+								},
+								{
+									"key": "category_id",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "is_featured",
+									"value": "false",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "approved",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Treatment Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/treatments/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"treatments",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{treatment_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Availability",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"treatment_id\": {{treatment_id}},\n  \"date\": \"{{booking_date}}\",\n  \"technician_ids\": [],\n  \"machine_ids\": []\n}"
+						},
+						"url": "{{base_url}}/api/v1/treatments/availability/check"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Available Machines",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/treatments/available-machines?treatment_id={{treatment_id}}&date={{booking_date}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"treatments",
+								"available-machines"
+							],
+							"query": [
+								{
+									"key": "treatment_id",
+									"value": "{{treatment_id}}",
+									"description": "Treatment ID"
+								},
+								{
+									"key": "date",
+									"value": "{{booking_date}}",
+									"description": "Date in Y-m-d format (must be today or future)"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Available Slots",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/treatments/available-slots?treatment_id={{treatment_id}}&date={{booking_date}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"treatments",
+								"available-slots"
+							],
+							"query": [
+								{
+									"key": "treatment_id",
+									"value": "{{treatment_id}}",
+									"description": "Treatment ID"
+								},
+								{
+									"key": "date",
+									"value": "{{booking_date}}",
+									"description": "Date in Y-m-d format (must be today or future)"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Toggle Favorite",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/treatments/:id/favorite",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"treatments",
+								":id",
+								"favorite"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{treatment_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Treatment Reviews",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/treatments/:id/reviews?per_page=15",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"treatments",
+								":id",
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "15"
+								},
+								{
+									"key": "rating",
+									"value": "",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{treatment_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Share Link",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/treatments/:id/share",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"treatments",
+								":id",
+								"share"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{treatment_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Treatment listings, details, availability, favorites, and reviews"
+		},
+		{
+			"name": "🏥 Clinics",
+			"item": [
+				{
+					"name": "Clinic Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/clinics/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"clinics",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{clinic_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clinic Treatments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/clinics/:id/treatments?per_page=15",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"clinics",
+								":id",
+								"treatments"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "15"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{clinic_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clinic Machines",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/clinics/:id/machines?per_page=15",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"clinics",
+								":id",
+								"machines"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "15"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{clinic_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Clinic Reviews",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/clinics/:id/reviews?per_page=15",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"clinics",
+								":id",
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "15"
+								},
+								{
+									"key": "rating",
+									"value": "",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{clinic_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Toggle Clinic Favorite",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/clinics/:id/favorite",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"clinics",
+								":id",
+								"favorite"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{clinic_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Clinic Share Link",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/clinics/:id/share",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"clinics",
+								":id",
+								"share"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{clinic_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Clinic profiles, treatments, technicians, machines, and reviews"
+		},
+		{
+			"name": "🔧 Machines",
+			"item": [
+				{
+					"name": "List Machines",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/machines?per_page=15",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"machines"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "15"
+								},
+								{
+									"key": "status",
+									"value": "ready",
+									"disabled": true
+								},
+								{
+									"key": "manufacturer",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Machine Clinics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/machines/:id/clinics?per_page=15",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"machines",
+								":id",
+								"clinics"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "15"
+								},
+								{
+									"key": "location",
+									"value": "{{location}}",
+									"description": "Filter by location (text search)",
+									"disabled": true
+								},
+								{
+									"key": "latitude",
+									"value": "{{latitude}}",
+									"description": "GPS latitude (requires longitude)",
+									"disabled": true
+								},
+								{
+									"key": "longitude",
+									"value": "{{longitude}}",
+									"description": "GPS longitude (requires latitude)",
+									"disabled": true
+								},
+								{
+									"key": "radius",
+									"value": "{{radius}}",
+									"description": "Search radius in km (default: 10)",
+									"disabled": true
+								},
+								{
+									"key": "rating",
+									"value": "{{rating}}",
+									"description": "Minimum rating (1-5)",
+									"disabled": true
+								},
+								{
+									"key": "star_rating",
+									"value": "{{star_rating}}",
+									"description": "Alias for rating (1-5)",
+									"disabled": true
+								},
+								{
+									"key": "sort_by",
+									"value": "{{sort_by}}",
+									"description": "Sort: newest, rating, popularity",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{machine_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Machine Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/machines/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"machines",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{machine_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Machine Treatments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/machines/:id/treatments?per_page=15",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"machines",
+								":id",
+								"treatments"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "15"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{machine_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Machine listings, details, treatments, and clinics"
+		},
+		{
+			"name": "💳 Payments",
+			"item": [
+				{
+					"name": "Get Payment Methods",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/v1/payments/methods"
+					},
+					"response": []
+				},
+				{
+					"name": "Execute Payment (MyFatoorah - Full)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"shipping_address_id\": 1,\n  \"payment_type\": \"full\",\n  \"payment_method\": \"myfatoorah\",\n  \"payment_method_id\": 2\n}"
+						},
+						"url": "{{base_url}}/api/v1/payments/execute"
+					},
+					"response": []
+				}
+			],
+			"description": "Payment methods and payment execution (MyFatoorah, partial)"
+		},
+		{
+			"name": "📅 Bookings",
+			"item": [
+				{
+					"name": "Get Available Slots",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"treatment_id\": {{treatment_id}},\n  \"date\": \"{{booking_date}}\",\n  \"technician_id\": null,\n  \"machine_id\": null\n}"
+						},
+						"url": "{{base_url}}/api/v1/bookings/available-slots"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Booking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"treatment_id\": {{treatment_id}},\n  \"clinic_id\": {{clinic_id}},\n  \"machine_id\": null,\n  \"total_sessions\": 3,\n  \"duration_minutes\": 30,\n  \"sessions\": [\n    {\n      \"slot_date\": \"2025-05-20\",\n      \"slot_time\": \"09:00\",\n      \"treatment_slot_id\": null\n    },\n    {\n      \"slot_date\": \"2025-05-22\",\n      \"slot_time\": \"09:00\",\n      \"treatment_slot_id\": null\n    },\n    {\n      \"slot_date\": \"2025-05-23\",\n      \"slot_time\": \"09:00\",\n      \"treatment_slot_id\": null\n    }\n  ],\n  \"total_amount\": 30.00,\n  \"patient_id\": null,\n  \"patient_name\": \"Yasmin Al-Kandari\",\n  \"patient_phone\": \"+96588888888\",\n  \"patient_age\": 27,\n  \"patient_gender\": \"female\",\n  \"notes\": \"I have very sensitive skin, please use low intensity at first.\"\n}"
+						},
+						"url": "{{base_url}}/api/v1/bookings"
+					},
+					"response": []
+				},
+				{
+					"name": "List Bookings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings?status=upcoming&per_page=15",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "upcoming",
+									"description": "Filter by status: pending, confirmed, completed, cancelled"
+								},
+								{
+									"key": "per_page",
+									"value": "15"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Booking History",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings/history?status=completed&per_page=15",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings",
+								"history"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "completed"
+								},
+								{
+									"key": "per_page",
+									"value": "15"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Booking Statistics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/v1/bookings/statistics"
+					},
+					"response": []
+				},
+				{
+					"name": "Booking Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{booking_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Booking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cancellation_reason\": \"Change of plans\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings/:id/cancel",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings",
+								":id",
+								"cancel"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{booking_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Booking",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"machine_id\": null,\n  \"duration_minutes\": 30,\n  \"notes\": \"Updated notes\",\n  \"patient_name\": \"Yasmin Al-Kandari\",\n  \"patient_phone\": \"+96588888888\",\n  \"patient_age\": 27,\n  \"patient_gender\": \"female\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{booking_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reschedule Booking (Single Session)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"slot_date\": \"{{booking_date}}\",\n  \"slot_time\": \"{{booking_time}}\",\n  \"treatment_slot_id\": null\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings/:id/reschedule",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings",
+								":id",
+								"reschedule"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{booking_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reschedule All Sessions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"sessions\": [\n    {\n      \"slot_date\": \"2025-05-25\",\n      \"slot_time\": \"10:00\",\n      \"treatment_slot_id\": null\n    },\n    {\n      \"slot_date\": \"2025-05-27\",\n      \"slot_time\": \"10:00\",\n      \"treatment_slot_id\": null\n    },\n    {\n      \"slot_date\": \"2025-05-28\",\n      \"slot_time\": \"10:00\",\n      \"treatment_slot_id\": null\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings/:id/reschedule-all-sessions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings",
+								":id",
+								"reschedule-all-sessions"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{booking_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Booking Sessions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings/:id/sessions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings",
+								":id",
+								"sessions"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{booking_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+		},
+		{
+					"name": "Upload Documents",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "documents",
+									"value": "",
+									"description": "Array of document files (PDF, images)",
+									"type": "file"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings/:id/documents",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings",
+								":id",
+								"documents"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{booking_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Documents",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings/:id/documents",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings",
+								":id",
+								"documents"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{booking_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Document",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings/:id/documents/:documentId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings",
+								":id",
+								"documents",
+								":documentId"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{booking_id}}"
+								},
+								{
+									"key": "documentId",
+									"value": "{{document_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Treatment Records",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings/:id/treatment-records",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings",
+								":id",
+								"treatment-records"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{booking_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Session Photos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photos",
+									"value": "",
+									"description": "Array of image files",
+									"type": "file"
+								},
+								{
+									"key": "type",
+									"value": "before",
+									"description": "before or after",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings/:id/session-photos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings",
+								":id",
+								"session-photos"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{booking_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+		},
+		{
+					"name": "Get Session Photos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings/:id/session-photos?type=all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings",
+								":id",
+								"session-photos"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "all",
+									"description": "all, before, after"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{booking_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Booking management (create, edit, list, show, cancel, reschedule, sessions, documents, treatment records, session photos)"
+				},
+				{
+			"name": "⭐ Reviews",
+			"item": [
+				{
+					"name": "Create Review",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"booking_id\": {{booking_id}},\n  \"treatment_id\": {{treatment_id}},\n  \"clinic_id\": {{clinic_id}},\n  \"rating\": {{rating}},\n  \"comment\": \"Great service! Very professional.\",\n  \"would_recommend\": true\n}"
+						},
+						"url": "{{base_url}}/api/v1/reviews"
+					},
+					"response": []
+				}
+			],
+			"description": "Review management for treatments, clinics, and technicians"
+		},
+		{
+			"name": "❓ Support",
+			"item": [
+				{
+					"name": "Get FAQs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/support/faqs",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"support",
+								"faqs"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "booking",
+									"description": "booking, payment, treatment, account",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Contact Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/api/v1/support/contact"
+					},
+					"response": []
+				}
+			],
+			"description": "Support center, FAQs, and contact info"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Auto-inject Authorization header if token exists",
+					"const token = pm.environment.get('token');",
+					"if (token) {",
+					"  pm.request.headers.upsert({",
+					"    key: 'Authorization',",
+					"    value: `Bearer ${token}`",
+					"  });",
+					"}",
+					"",
+					"// Auto-inject Accept-Language header",
+					"const language = pm.environment.get('language') || 'en';",
+					"pm.request.headers.upsert({",
+					"  key: 'Accept-Language',",
+					"  value: language",
+					"});",
+					"",
+					"// Auto-inject Accept header",
+					"pm.request.headers.upsert({",
+					"  key: 'Accept',",
+					"  value: 'application/json'",
+					"});",
+					"",
+					"// Auto-inject Content-Type for POST/PUT requests",
+					"if (['POST', 'PUT', 'PATCH'].includes(pm.request.method)) {",
+					"  pm.request.headers.upsert({",
+					"    key: 'Content-Type',",
+					"    value: 'application/json'",
+					"  });",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Auto-save tokens from response",
+					"try {",
+					"  const json = pm.response.json();",
+					"  ",
+					"  // Extract access token (multiple patterns)",
+					"  const accessToken = json?.data?.token?.token || ",
+					"                      json?.data?.token?.access_token || ",
+					"                      json?.data?.access_token || ",
+					"                      json?.access_token || ",
+					"                      json?.token;",
+					"  ",
+					"  if (accessToken) {",
+					"    pm.environment.set('token', accessToken);",
+					"    console.log('✅ Access token saved to environment');",
+					"  }",
+					"  ",
+					"  // Extract security token",
+					"  const securityToken = json?.data?.security_token || json?.security_token;",
+					"  if (securityToken) {",
+					"    pm.environment.set('security_token', securityToken);",
+					"    console.log('✅ Security token saved to environment');",
+					"  }",
+					"  ",
+					"  // Log response status",
+					"  if (json?.success) {",
+					"    console.log('✅ Request successful:', json?.message || 'OK');",
+					"  } else {",
+					"    console.log('❌ Request failed:', json?.message || 'Unknown error');",
+					"  }",
+					"  ",
+					"  // Auto-save IDs from responses",
+					"  if (json?.data?.user?.id) {",
+					"    pm.environment.set('user_id', json.data.user.id);",
+					"  }",
+					"  if (json?.data?.booking?.id) {",
+					"    pm.environment.set('booking_id', json.data.booking.id);",
+					"  }",
+					"  if (json?.data?.treatment?.id || json?.data?.service?.id) {",
+					"    pm.environment.set('treatment_id', json.data.treatment?.id || json.data.service?.id);",
+					"  }",
+					"  if (json?.data?.clinic?.id || json?.data?.vendor?.id) {",
+					"    pm.environment.set('clinic_id', json.data.clinic?.id || json.data.vendor?.id);",
+					"  }",
+					"} catch (e) {",
+					"  // Silently fail if response is not JSON",
+					"}"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "{{base_url}}",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "{{token}}",
+			"type": "string"
+		},
+		{
+			"key": "security_token",
+			"value": "{{security_token}}",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,566 @@
+/* ==========================================================================
+   RTL (Right-to-Left) Support for Arabic Language
+   ========================================================================== */
+
+/* Global RTL Rules */
+html[dir="rtl"] {
+    direction: rtl;
+}
+
+html[dir="rtl"] body {
+    direction: rtl;
+    text-align: right;
+}
+
+/* ==========================================================================
+   Layout Components
+   ========================================================================== */
+
+/* Sidebar RTL */
+html[dir="rtl"] .sidebar {
+    left: auto;
+    right: 0;
+    border-right: none;
+    border-left: 1px solid #e5e7eb;
+}
+
+html[dir="rtl"] .sidebar-trigger {
+    transform: rotate(180deg);
+}
+
+/* Header RTL */
+html[dir="rtl"] .app-header {
+    direction: rtl;
+}
+
+html[dir="rtl"] .header-content {
+    flex-direction: row-reverse;
+}
+
+/* ==========================================================================
+   Navigation & Breadcrumbs
+   ========================================================================== */
+
+/* Breadcrumb RTL */
+html[dir="rtl"] .breadcrumb {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .breadcrumb-list {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .breadcrumb-separator {
+    transform: rotate(180deg);
+}
+
+/* Navigation Menu RTL */
+html[dir="rtl"] .nav-menu {
+    text-align: right;
+}
+
+html[dir="rtl"] .nav-item {
+    text-align: right;
+}
+
+html[dir="rtl"] .nav-item .icon {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
+/* ==========================================================================
+   Page Layout & Actions
+   ========================================================================== */
+
+/* Page Header RTL */
+html[dir="rtl"] .page-header {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .page-title-section {
+    text-align: right;
+}
+
+html[dir="rtl"] .page-actions {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+
+html[dir="rtl"] .page-actions .btn {
+    margin-left: 0.75rem;
+    margin-right: 0;
+}
+
+html[dir="rtl"] .page-actions .btn:first-child {
+    margin-left: 0;
+}
+
+/* ==========================================================================
+   Buttons & Icons
+   ========================================================================== */
+
+/* Button Icons RTL */
+html[dir="rtl"] .btn-icon-left {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+html[dir="rtl"] .btn-icon-right {
+    margin-left: 0;
+    margin-right: 0.5rem;
+}
+
+/* Directional Icons */
+html[dir="rtl"] .icon-arrow-left,
+html[dir="rtl"] .icon-chevron-left,
+html[dir="rtl"] .icon-caret-left {
+    transform: rotate(180deg);
+}
+
+html[dir="rtl"] .icon-arrow-right,
+html[dir="rtl"] .icon-chevron-right,
+html[dir="rtl"] .icon-caret-right {
+    transform: rotate(180deg);
+}
+
+/* ==========================================================================
+   Tables & Data Display
+   ========================================================================== */
+
+/* Table RTL */
+html[dir="rtl"] table {
+    direction: rtl;
+}
+
+html[dir="rtl"] table th,
+html[dir="rtl"] table td {
+    text-align: right;
+}
+
+html[dir="rtl"] table th:first-child,
+html[dir="rtl"] table td:first-child {
+    padding-right: 1rem;
+    padding-left: 0.5rem;
+}
+
+html[dir="rtl"] table th:last-child,
+html[dir="rtl"] table td:last-child {
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+}
+
+/* Table Actions RTL */
+html[dir="rtl"] .table-actions {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+
+html[dir="rtl"] .table-actions .btn {
+    margin-left: 0.25rem;
+    margin-right: 0;
+}
+
+html[dir="rtl"] .table-actions .btn:first-child {
+    margin-left: 0;
+}
+
+/* ==========================================================================
+   Forms & Inputs
+   ========================================================================== */
+
+/* ==========================================================================
+   Form Fields RTL - Comprehensive Support
+   ========================================================================== */
+
+/* Form Fields RTL */
+html[dir="rtl"] .form-field {
+    text-align: right;
+    direction: rtl;
+}
+
+html[dir="rtl"] .form-label {
+    text-align: right;
+    direction: rtl;
+}
+
+html[dir="rtl"] .form-input,
+html[dir="rtl"] .form-textarea,
+html[dir="rtl"] .form-select {
+    text-align: right;
+    direction: rtl;
+}
+
+html[dir="rtl"] .form-input::placeholder,
+html[dir="rtl"] .form-textarea::placeholder {
+    text-align: right;
+    direction: rtl;
+}
+
+/* All Input Types - Comprehensive Coverage */
+html[dir="rtl"] input[type="text"],
+html[dir="rtl"] input[type="email"],
+html[dir="rtl"] input[type="password"],
+html[dir="rtl"] input[type="number"],
+html[dir="rtl"] input[type="tel"],
+html[dir="rtl"] input[type="search"],
+html[dir="rtl"] input[type="url"],
+html[dir="rtl"] input[type="date"],
+html[dir="rtl"] input[type="time"],
+html[dir="rtl"] input[type="datetime-local"],
+html[dir="rtl"] input[type="month"],
+html[dir="rtl"] input[type="week"] {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Validation Messages RTL */
+html[dir="rtl"] .error-message,
+html[dir="rtl"] .validation-error,
+html[dir="rtl"] [role="alert"],
+html[dir="rtl"] .text-destructive {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Select Dropdown RTL */
+html[dir="rtl"] .select-trigger {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .select-icon {
+    margin-left: 0;
+    margin-right: 0.5rem;
+    transform: rotate(180deg);
+}
+
+/* Checkbox & Radio RTL */
+html[dir="rtl"] .checkbox-wrapper,
+html[dir="rtl"] .radio-wrapper {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .checkbox-label,
+html[dir="rtl"] .radio-label {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+/* ==========================================================================
+   Filters & Search
+   ========================================================================== */
+
+/* Filter Section RTL */
+html[dir="rtl"] .filters-section {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .filter-item {
+    margin-left: 1rem;
+    margin-right: 0;
+}
+
+html[dir="rtl"] .filter-item:first-child {
+    margin-left: 0;
+}
+
+/* Search Bar RTL */
+html[dir="rtl"] .search-wrapper {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .search-icon {
+    left: auto;
+    right: 0.75rem;
+}
+
+html[dir="rtl"] .search-input {
+    padding-left: 1rem;
+    padding-right: 2.5rem;
+    text-align: right;
+}
+
+/* ==========================================================================
+   Tabs & Navigation
+   ========================================================================== */
+
+/* Tabs RTL */
+html[dir="rtl"] .tabs-list {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .tab-trigger {
+    text-align: right;
+}
+
+/* Tab Content RTL */
+html[dir="rtl"] .tab-content {
+    text-align: right;
+}
+
+/* ==========================================================================
+   Pagination
+   ========================================================================== */
+
+/* Pagination RTL */
+html[dir="rtl"] .pagination {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .pagination-item {
+    margin-left: 0.25rem;
+    margin-right: 0;
+}
+
+html[dir="rtl"] .pagination-item:first-child {
+    margin-left: 0;
+}
+
+html[dir="rtl"] .pagination-arrow {
+    transform: rotate(180deg);
+}
+
+html[dir="rtl"] .pagination-info {
+    text-align: right;
+}
+
+/* ==========================================================================
+   Cards & Content Sections
+   ========================================================================== */
+
+/* Card RTL */
+html[dir="rtl"] .card {
+    text-align: right;
+}
+
+html[dir="rtl"] .card-header {
+    text-align: right;
+}
+
+html[dir="rtl"] .card-content {
+    text-align: right;
+}
+
+html[dir="rtl"] .card-actions {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+
+/* Stats Cards RTL */
+html[dir="rtl"] .stats-grid {
+    direction: rtl;
+}
+
+html[dir="rtl"] .stat-card {
+    text-align: right;
+}
+
+html[dir="rtl"] .stat-icon {
+    margin-left: 1rem;
+    margin-right: 0;
+}
+
+/* ==========================================================================
+   Modals & Dialogs
+   ========================================================================== */
+
+/* Dialog RTL */
+html[dir="rtl"] .dialog-content {
+    text-align: right;
+}
+
+html[dir="rtl"] .dialog-header {
+    text-align: right;
+}
+
+html[dir="rtl"] .dialog-footer {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+
+html[dir="rtl"] .dialog-footer .btn {
+    margin-left: 0.75rem;
+    margin-right: 0;
+}
+
+html[dir="rtl"] .dialog-footer .btn:first-child {
+    margin-left: 0;
+}
+
+/* ==========================================================================
+   Badges & Status Indicators
+   ========================================================================== */
+
+/* Badge RTL */
+html[dir="rtl"] .badge {
+    text-align: center; /* Keep badges centered */
+}
+
+html[dir="rtl"] .status-badge {
+    text-align: center;
+}
+
+/* ==========================================================================
+   Dropdowns & Menus
+   ========================================================================== */
+
+/* Dropdown RTL */
+html[dir="rtl"] .dropdown-content {
+    left: auto;
+    right: 0;
+    text-align: right;
+}
+
+html[dir="rtl"] .dropdown-item {
+    text-align: right;
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .dropdown-item .icon {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+
+/* Spacing Utilities RTL */
+html[dir="rtl"] .ml-auto {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+html[dir="rtl"] .mr-auto {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+html[dir="rtl"] .pl-4 {
+    padding-left: 0;
+    padding-right: 1rem;
+}
+
+html[dir="rtl"] .pr-4 {
+    padding-right: 0;
+    padding-left: 1rem;
+}
+
+/* Flex Utilities RTL */
+html[dir="rtl"] .flex-row-reverse {
+    flex-direction: row;
+}
+
+html[dir="rtl"] .flex-row {
+    flex-direction: row-reverse;
+}
+
+/* Text Alignment RTL */
+html[dir="rtl"] .text-left {
+    text-align: right;
+}
+
+html[dir="rtl"] .text-right {
+    text-align: left;
+}
+
+/* ==========================================================================
+   Component-Specific Fixes
+   ========================================================================== */
+
+/* Sidebar Navigation */
+html[dir="rtl"] .nav-main .nav-group {
+    text-align: right;
+}
+
+html[dir="rtl"] .nav-main .nav-item a {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .nav-main .nav-item .icon {
+    margin-left: 0.75rem;
+    margin-right: 0;
+}
+
+/* Language Switcher */
+html[dir="rtl"] .language-switcher {
+    flex-direction: row-reverse;
+}
+
+/* Data Table Specific */
+html[dir="rtl"] .data-table-wrapper {
+    direction: rtl;
+}
+
+html[dir="rtl"] .data-table th.actions,
+html[dir="rtl"] .data-table td.actions {
+    text-align: left; /* Keep actions left-aligned even in RTL */
+}
+
+/* Form Grid */
+html[dir="rtl"] .form-grid {
+    direction: rtl;
+}
+
+html[dir="rtl"] .form-grid .form-field {
+    text-align: right;
+}
+
+/* ==========================================================================
+   Responsive RTL
+   ========================================================================== */
+
+/* Mobile RTL Adjustments */
+@media (max-width: 768px) {
+    html[dir="rtl"] .mobile-menu {
+        left: auto;
+        right: 0;
+    }
+    
+    html[dir="rtl"] .mobile-header {
+        flex-direction: row-reverse;
+    }
+    
+    html[dir="rtl"] .mobile-actions {
+        flex-direction: row-reverse;
+    }
+}
+
+/* ==========================================================================
+   Animation & Transitions RTL
+   ========================================================================== */
+
+/* Slide Animations RTL */
+html[dir="rtl"] .slide-in-left {
+    transform: translateX(100%);
+}
+
+html[dir="rtl"] .slide-in-right {
+    transform: translateX(-100%);
+}
+
+html[dir="rtl"] .slide-out-left {
+    transform: translateX(-100%);
+}
+
+html[dir="rtl"] .slide-out-right {
+    transform: translateX(100%);
+}
+
+/* ==========================================================================
+   Print Styles RTL
+   ========================================================================== */
+
+@media print {
+    html[dir="rtl"] {
+        direction: rtl;
+    }
+    
+    html[dir="rtl"] body {
+        text-align: right;
+    }
+    
+    html[dir="rtl"] .print-header {
+        text-align: right;
+    }
+}

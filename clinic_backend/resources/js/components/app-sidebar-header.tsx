@@ -1,0 +1,43 @@
+import { Breadcrumbs } from '@/components/breadcrumbs';
+import { LanguageSwitcher } from '@/components/language-switcher';
+import { NotificationBell } from '@/components/notification-bell';
+import { SidebarTrigger } from '@/components/ui/sidebar';
+import { type BreadcrumbItem as BreadcrumbItemType, type SharedData } from '@/types';
+import { usePage } from '@inertiajs/react';
+
+export function AppSidebarHeader({
+    breadcrumbs = [],
+}: {
+    breadcrumbs?: BreadcrumbItemType[];
+}) {
+    const page = usePage<SharedData>();
+    const { rtl } = page.props;
+    
+    return (
+        <header className="flex h-16 shrink-0 items-center justify-between border-b border-sidebar-border/50 px-6 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 md:px-4">
+            {rtl ? (
+                <>
+                    <div className="flex items-center gap-2">
+                        <SidebarTrigger className="-mr-1" />
+                        <Breadcrumbs breadcrumbs={breadcrumbs} />
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <NotificationBell />
+                        <LanguageSwitcher />
+                    </div>
+                </>
+            ) : (
+                <>
+                    <div className="flex items-center gap-2">
+                        <SidebarTrigger className="-ml-1" />
+                        <Breadcrumbs breadcrumbs={breadcrumbs} />
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <NotificationBell />
+                        <LanguageSwitcher />
+                    </div>
+                </>
+            )}
+        </header>
+    );
+}

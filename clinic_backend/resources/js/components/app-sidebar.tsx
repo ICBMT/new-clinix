@@ -65,6 +65,11 @@ export function AppSidebar() {
                 href: '/dashboard/clinics-staff',
                 icon: UserCog,
             }] : []),
+            ...(can('staff-leaves.view') ? [{
+                title: t('staff_leaves'),
+                href: '/dashboard/staff-leaves',
+                icon: Calendar,
+            }] : []),
             // Bookings - Super Admin sees all, Clinic role sees their own, Clinic Manager sees assigned clinics
             ...(can('clinics-bookings.view') || can('bookings.view') ? [{
                 title: t('bookings'),

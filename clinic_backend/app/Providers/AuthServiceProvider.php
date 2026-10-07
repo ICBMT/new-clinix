@@ -21,6 +21,10 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        foreach (['view', 'create', 'show', 'edit', 'destroy'] as $action) {
+            Gate::define("staff-leaves.{$action}", fn ($user) => $user->hasPermissionTo("staff-leaves.{$action}"));
+        }
+
         // Super admin can access everything
         Gate::before(function ($user, $ability) {
             if ($user->hasRole('super-admin')) {

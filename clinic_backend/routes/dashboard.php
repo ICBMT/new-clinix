@@ -231,6 +231,9 @@ Route::middleware(['auth', 'verified', 'check-admin-panel-access'])->prefix('das
         Route::post('/clinics-payouts/{id}/fail', [ClinicPayoutManagementController::class, 'fail'])->name('clinics-payouts.fail');
     });
 
+    Route::resource('staff-leaves', \App\Http\Controllers\Dashboard\StaffLeaveController::class)
+        ->parameters(['staff-leaves' => 'staffLeave']);
+
     // Clinics Staff Management
     Route::group([
         'middleware' => ['check-admin-panel-access'],

@@ -604,4 +604,9 @@ class User extends Authenticatable
     {
         return $this->hasRole('clinic_manager');
     }
+
+    public function staffLeaves(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(StaffLeave::class, 'staff_id');
+    }
 }
